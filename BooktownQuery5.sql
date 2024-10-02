@@ -12,7 +12,7 @@ AuthorSubjectCounts AS (
     WHERE b.Subject_ID IN (SELECT Subject_ID FROM RowlingSubjects)
     GROUP BY a.Author_ID, a.First_Name, a.Last_Name
 )
-SELECT asc.Author_ID, asc.First_Name, asc.Last_Name
-FROM AuthorSubjectCounts asc
-WHERE asc.SubjectCount = (SELECT COUNT(*) FROM RowlingSubjects)
-ORDER BY asc.Last_Name ASC, asc.Author_ID DESC;
+SELECT a.Author_ID, a.First_Name, a.Last_Name
+FROM AuthorSubjectCounts a
+WHERE a.SubjectCount = (SELECT COUNT(*) FROM RowlingSubjects)
+ORDER BY a.Last_Name ASC, a.Author_ID DESC;
